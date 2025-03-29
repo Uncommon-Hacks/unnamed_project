@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Image Authentication</h1>
+    
+    <div class="auth-progress">
+        {% for i in range(1, total_rounds + 1) %}
+            <div class="progress-step {% if i < round_number %}completed{% elif i == round_number %}active{% endif %}">
+                {{ i }}
+            </div>
+        {% endfor %}
+    </div>
+    
+    <p class="text-center">Round {{ round_number }} of {{ total_rounds }}: Select your image from the options below</p>
+    
+    <form method="POST" id="auth-form">
+        <input type="hidden" id="selected_image" name="selected_image" value="">
+        
+        <div class="image-grid">
+            {% for image in images %}
+                <div class="image-item">
+                    <img src="{{ image.path }}" onclick="selectImage({{ image.index }})" data-index="{{ image.index }}">
+                </div>
+            {% endfor %}
+        </div>
+        
+        <div style="margin-top: 30px; text-align: center;">
+            <button type="submit" id="submit-btn" disabled>Confirm Selection</button>
+        </div>
+    </form>
+    
+    <script>
+        function selectImage(index) {
+            // Reset all images
+            document.querySelectorAll('.image-grid img').forEach(img => {
+                img.style.border = '3px solid transparent';
+            });
+            
+            // Highlight selected image
+            document.querySelector(`img[data-index="${index}"]`).style.border = '3px solid var(--primary-color)';
+            
+            // Update hidden input
+            document.getElementById('selected_image').value = index;
+            
+            // Enable submit button
+            document.getElementById('submit-btn').disabled = false;
+        }
+    </script>
+{% endblock %}

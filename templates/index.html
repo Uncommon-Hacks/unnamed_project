@@ -1,0 +1,13 @@
+<!-- templates/index.html -->
+{% extends "base.html" %}
+{% block content %}
+    <h1>Welcome to Image Authentication System</h1>
+    <p>This system uses your personal images for authentication.</p>
+    
+    {% if 'user_id' not in session %}
+        <p>Please <a href="{{ url_for('login') }}">login</a> or <a href="{{ url_for('register') }}">register</a> to continue.</p>
+    {% else %}
+        <p>You are logged in as: {{ session['user_id'] }}</p>
+        <p><a href="{{ url_for('dashboard') }}">Go to your dashboard</a></p>
+    {% endif %}
+{% endblock %}

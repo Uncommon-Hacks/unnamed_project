@@ -1,0 +1,16 @@
+<!-- templates/login.html -->
+{% extends "base.html" %}
+{% block content %}
+    <h1>Login</h1>
+    
+    <form method="POST">
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        
+        <p>After submitting, you will need to identify your images in 5 authentication rounds.</p>
+        
+        <button type="submit">Start Authentication</button>
+    </form>
+{% endblock %}

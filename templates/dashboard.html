@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Welcome, {{ username }}!</h1>
+    <p>You have successfully authenticated using your images. This is your secure dashboard area.</p>
+    
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-label">Successful Logins</div>
+            <div class="stat-value">{{ session.get('login_count', 1) }}</div>
+        </div>
+        
+        <div class="stat-card">
+            <div class="stat-label">Last Login</div>
+            <div class="stat-value">Today</div>
+        </div>
+        
+        <div class="stat-card">
+            <div class="stat-label">Authentication Level</div>
+            <div class="stat-value">Image</div>
+        </div>
+    </div>
+    
+    <h2 style="margin-top: 30px;">Your Account</h2>
+    <p>You can manage your image collection and account settings below.</p>
+    
+    <div style="display: flex; gap: 20px; margin-top: 20px;">
+        <button onclick="location.href='#'">Manage Images</button>
+        <button onclick="location.href='#'" style="background-color: #6c757d;">Account Settings</button>
+    </div>
+{% endblock %}
