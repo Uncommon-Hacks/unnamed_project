@@ -1,0 +1,54 @@
+<!-- home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Authentication - Login</title>
+    <style>
+        body { text-align: center; font-family: Arial, sans-serif; padding: 20px; }
+        .image-container { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        img { width: 100px; height: 100px; cursor: pointer; border: 2px solid transparent; }
+        img.selected { border-color: green; }
+    </style>
+</head>
+<body>
+    <h1>Click Your Image to Authenticate</h1>
+    <div class="image-container">
+        <!-- Images will be dynamically inserted here -->
+    </div>
+    <button onclick="submitSelection()">Submit</button>
+    
+    <script>
+        let correctSelections = 0;
+        const correctImageId = "user_image_1"; // This should come from the server
+
+        function loadImages() {
+            const container = document.querySelector('.image-container');
+            for (let i = 1; i <= 5; i++) {
+                let img = document.createElement('img');
+                img.src = `image${i}.jpg`; // Replace with dynamic paths
+                img.id = `image_${i}`;
+                img.onclick = function() {
+                    if (img.id === correctImageId) {
+                        correctSelections++;
+                        img.classList.add('selected');
+                    }
+                };
+                container.appendChild(img);
+            }
+        }
+        
+        function submitSelection() {
+            if (correctSelections >= 5) {
+                window.location.href = '/redirect';
+            } else {
+                alert('Authentication failed! Try again.');
+                correctSelections = 0;
+            }
+        }
+        
+        loadImages();
+    </script>
+</body>
+</html>
