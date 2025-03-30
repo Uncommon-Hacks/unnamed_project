@@ -18,4 +18,36 @@
         <p>You’re logged in as: <strong>{{ session['user_id'] }}</strong></p>
         <p><a href="{{ url_for('dashboard') }}">Go to your dashboard</a></p>
     {% endif %}
+    <hr>
+
+    <section class="testimonials">
+        <h2>What Our Users Are Saying</h2>
+
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <img src="/static/hriday.jpeg" alt="Hriday S." class="testimonial-image">
+                <blockquote>
+                    “Sometimes I forget that there are still jobs in computer science, this app helps remind me of that" - Hriday S, SWE
+                </blockquote>
+                <p class="attribution">— Hriday S, SWE</p>
+            </div>
+
+            <div class="testimonial-card">
+                <img src="/static/redbull.JPG" alt="redbull" class="testimonial-image">
+                <blockquote>
+                    "Sometimes we forget that we can give you wings"-Redbull Cans
+                </blockquote>
+                <p class="attribution">— Dr. A. Patel, neurologist</p>
+            </div>
+
+            <div class="testimonial-card">
+                <img src="/static/crowd.jpg" alt="crows" class="testimonial-image">
+                <blockquote>
+                    "None of us know our passwords. We all use the same one password everwhere still though."
+                </blockquote>
+                <p class="attribution">— Marcus T., son and tech enthusiast</p>
+            </div>
+        </div>
+    </section>
+
 {% endblock %}
