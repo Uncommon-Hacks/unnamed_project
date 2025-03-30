@@ -8,7 +8,7 @@
             {% for message in messages %}
                 <div class="message {% if message.sender == 'user' %}user{% else %}ai{% endif %}">
                     <div class="message-content">
-                        <p>{{ message.text }}</p>
+                        <p>{{message.text}}</p>
                     </div>
                     <div class="message-time">Today, random time for now</div>
                 </div>

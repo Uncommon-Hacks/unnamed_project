@@ -1,0 +1,13 @@
+Okay, I need the prompt you want to convert into a memory blob for the user "labhaaansh". Provide the prompt, and I'll transform it into a memory paragraph.
+
+For example, if the prompt was:
+
+"Hey, can you help me remember what we talked about last Tuesday? I think it was about the AI project and the upcoming deadline."
+
+Then the memory blob I create would look something like this:
+
+**Memory Blob for labhaaansh:**
+
+> **Date:** [Date of this conversation]
+> **Context:** Conversation with user regarding a previous discussion.
+> **Content:** User inquired about a conversation held last Tuesday. The conversation likely centered around an AI project and an impending deadline.  User requested help in recalling the specifics of the previous conversation.

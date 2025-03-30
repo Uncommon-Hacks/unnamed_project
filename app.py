@@ -5,7 +5,7 @@ from functools import wraps
 import secrets
 from pprint import pprint
 
-from lib.aiLib import generate_gemini_response
+from lib import aiLib
 from lib.helpers import *
 
 app = Flask(__name__)
@@ -172,7 +172,8 @@ def dashboard():
         user_input = request.form['user_input']
         messages = session.get('chat_messages', [])
         messages.append({'sender': 'user', 'text': user_input})
-        gemini_response = generate_gemini_response(user_input)
+        aiLib.add_prompt_to_memory(user_input, username)
+        gemini_response = aiLib.generate_gemini_response(user_input, username)
         messages.append({'sender': 'gemini', 'text': gemini_response})
         session['chat_messages'] = messages
     else:
