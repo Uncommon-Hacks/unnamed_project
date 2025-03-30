@@ -38,3 +38,19 @@
     border: 3px solid #00ffe0;
     box-shadow: 0 0 12px rgba(0, 255, 224, 0.6);
 }
+.navbar-brand {
+    font-weight: bold;
+    color: #4a6fff !important;
+}
+.auth-image {
+    cursor: pointer;
+    transition: 0.2s ease;
+    border: 3px solid transparent;
+}
+.auth-image:hover {
+    border-color: #4a6fff;
+    transform: scale(1.02);
+}
+.flash-messages {
+    margin-top: 1rem;
+}
