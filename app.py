@@ -6,6 +6,7 @@ import shutil
 from functools import wraps
 import secrets
 import glob
+from pprint import pprint
 
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(16)
@@ -233,6 +234,8 @@ def authenticate():
             'path': path
         })
     
+    pprint(images)
+
     return render_template('authenticate.html', 
                            images=images, 
                            round_number=current_round + 1, 
