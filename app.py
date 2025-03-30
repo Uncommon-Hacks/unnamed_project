@@ -7,7 +7,12 @@ from pprint import pprint
 
 from lib import aiLib
 from lib.helpers import *
+import re
 
+def strip_markdown(text):
+    # Very basic: removes *, _, ` used in Markdown
+    return re.sub(r'[*_`]+', '', text)
+    
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(16)
 
@@ -175,9 +180,13 @@ def dashboard():
         aiLib.add_prompt_to_memory(user_input, username)
         gemini_response = aiLib.generate_gemini_response(user_input, username)
         messages.append({'sender': 'gemini', 'text': gemini_response})
+
         session['chat_messages'] = messages
     else:
-        messages = session.get('chat_messages', [])
+        messages = session.get('chat_messages')
+        if messages is None:
+            messages = []
+            session['chat_messages'] = messages  # ensure persistence
 
     return render_template('dashboard.html', username=username, messages=messages)
 
