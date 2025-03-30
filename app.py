@@ -177,7 +177,15 @@ def dashboard():
         user_input = request.form['user_input']
         messages = session.get('chat_messages', [])
         messages.append({'sender': 'user', 'text': user_input})
-        aiLib.add_prompt_to_memory(user_input, username)
+        file_path = "path/to/your/file.txt"
+
+        with open("memories/" + session['user_id'] + ".txt", "r") as file:
+            all_data = file.read()
+
+        # Now 'all_data' is a string with the entire file’s content.
+
+
+        aiLib.add_prompt_to_memory(user_input + "Data " + all_data, username)
         gemini_response = aiLib.generate_gemini_response(user_input, username)
         messages.append({'sender': 'gemini', 'text': gemini_response})
 
