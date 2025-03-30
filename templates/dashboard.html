@@ -1,227 +1,28 @@
 {% extends "base.html" %}
 {% block content %}
     <h1>Memory Chat</h1>
-    <p>Welcome back, {{ username }}. Chat with your memories below or try a random memory prompt.</p>
+    <p>Welcome back, {{ username }}. Chat with your memories below.</p>
     
     <div class="memory-chat-container">
-        <div class="chat-header">
-            <button id="random-memory-btn">
-                <span>Random Memory</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                </svg>
-            </button>
-        </div>
-        
         <div class="chat-messages">
-            <div class="message system">
-                <div class="message-content">
-                    <p>Hello {{ username }}, I'm here to help you remember. You can ask me about past events, people, or places. Or try the "Random Memory" button to explore your memories.</p>
+            {% for message in messages %}
+                <div class="message {{ message.sender }}">
+                    <div class="message-content">
+                        <p>{{ message.text }}</p>
+                    </div>
+                    <div class="message-time">Today,  random time for now </div>
                 </div>
-                <div class="message-time">Today, 10:15 AM</div>
-            </div>
-            
-            <div class="message memory">
-                <div class="message-header">
-                    <span class="message-title">Your Wedding Anniversary</span>
-                    <span class="message-date">June 12, 1978</span>
-                </div>
-                <div class="message-content">
-                    <p>You and Eleanor celebrated your 10th wedding anniversary with a trip to Napa Valley. You stayed at the Vineyard View Inn for three days.</p>
-                    <p>You went wine tasting at Mitchell Vineyards where the owner gave you a special bottle to celebrate. You had dinner at The Garden Restaurant where you danced to "your song" - Etta James' At Last.</p>
-                </div>
-                <div class="message-time">Today, 10:17 AM</div>
-            </div>
-            
-            <div class="message user">
-                <div class="message-content">
-                    <p>Tell me more about Eleanor.</p>
-                </div>
-                <div class="message-time">Today, 10:20 AM</div>
-            </div>
-            
-            <div class="message memory">
-                <div class="message-header">
-                    <span class="message-title">About Eleanor</span>
-                </div>
-                <div class="message-content">
-                    <p>Eleanor has been your wife for 56 years. You met at Central Library when you both reached for the same book - "The Great Gatsby." She loves gardening and has a beautiful rose garden that's won local competitions.</p>
-                    <p>She worked as a school teacher for 35 years before retiring. Her favorite color is blue, and she makes the best apple pie you've ever tasted. You call her "Ellie" as a term of endearment.</p>
-                </div>
-                <div class="message-time">Today, 10:22 AM</div>
-            </div>
+            {% endfor %}
         </div>
         
-        <div class="chat-input">
-            <input type="text" placeholder="Ask about a memory..." />
-            <button>
+        <form method="POST" class="chat-input">
+            <input type="text" name="user_input" placeholder="Ask about a memory..." />
+            <button type="submit">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="22" y1="2" x2="11" y2="13"></line>
                     <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                 </svg>
             </button>
-        </div>
+        </form>
     </div>
-
-    <style>
-        .memory-chat-container {
-            display: flex;
-            flex-direction: column;
-            height: 70vh;
-            margin-top: 25px;
-            background-color: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            overflow: hidden;
-        }
-        
-        .chat-header {
-            padding: 15px;
-            background-color: #f8f9fa;
-            border-bottom: 1px solid #e9ecef;
-            display: flex;
-            justify-content: flex-end;
-        }
-        
-        #random-memory-btn {
-            background-color: var(--primary-color);
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            min-width: auto;
-            margin-top: 0;
-        }
-        
-        #random-memory-btn:hover {
-            background-color: var(--primary-hover);
-        }
-        
-        .chat-messages {
-            flex-grow: 1;
-            padding: 20px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-            background-color: #f8f9fa;
-        }
-        
-        .message {
-            max-width: 85%;
-            padding: 15px;
-            border-radius: 12px;
-            position: relative;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        .message.user {
-            align-self: flex-end;
-            background-color: var(--primary-color);
-            color: white;
-            border-bottom-right-radius: 2px;
-        }
-        
-        .message.system {
-            align-self: center;
-            background-color: #f1f3f5;
-            color: #495057;
-            border-radius: 8px;
-            max-width: 90%;
-            text-align: center;
-        }
-        
-        .message.memory {
-            align-self: flex-start;
-            background-color: white;
-            border-left: 4px solid var(--primary-color);
-            border-bottom-left-radius: 2px;
-        }
-        
-        .message-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .message-title {
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-        
-        .message-date {
-            color: #6c757d;
-            font-size: 0.85rem;
-        }
-        
-        .message-content p {
-            margin: 0 0 10px 0;
-        }
-        
-        .message-content p:last-child {
-            margin-bottom: 0;
-        }
-        
-        .message-time {
-            position: absolute;
-            bottom: -20px;
-            font-size: 0.75rem;
-            color: #adb5bd;
-            white-space: nowrap;
-        }
-        
-        .message.user .message-time {
-            right: 5px;
-        }
-        
-        .message.memory .message-time, .message.system .message-time {
-            left: 5px;
-        }
-        
-        .chat-input {
-            display: flex;
-            padding: 15px;
-            background-color: white;
-            border-top: 1px solid #e9ecef;
-        }
-        
-        .chat-input input {
-            flex-grow: 1;
-            margin-right: 10px;
-            border-radius: 20px;
-            padding-left: 20px;
-        }
-        
-        .chat-input button {
-            width: 45px;
-            height: 45px;
-            min-width: 45px;
-            border-radius: 50%;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 0;
-        }
-        
-        /* Responsive adjustments */
-        @media (max-width: 576px) {
-            .memory-chat-container {
-                height: 75vh;
-            }
-            
-            .message {
-                max-width: 90%;
-            }
-            
-            .chat-input input {
-                padding-left: 15px;
-            }
-        }
-    </style>
 {% endblock %}
