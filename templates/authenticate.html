@@ -12,6 +12,7 @@
     <p class="text-center">Round {{ round_number }} of {{ total_rounds }}: Select your image from the options below</p>
     
     <form method="POST" id="auth-form">
+        {{ form.csrf_token }}
         <input type="hidden" id="selected_image" name="selected_image" value="">
         
         <div class="image-grid">
