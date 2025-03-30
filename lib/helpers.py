@@ -6,8 +6,8 @@ import glob
 UPLOAD_FOLDER = 'static/img'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 MIN_IMAGES_REQUIRED = 5
-AUTH_ROUNDS = 1 # change this to 5 in prod 
-IMAGES_PER_ROUND = 9
+AUTH_ROUNDS = 5 # change this to 5 in prod 
+IMAGES_PER_ROUND = 10
 
 # Helper functions
 def allowed_file(filename):
