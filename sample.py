@@ -9,7 +9,7 @@ import os
 client = genai.Client(api_key='AIzaSyD5fpolJJg8YmzxIXPCVhbZpGNetwWhk6w')
 
 # Folder to save images
-output_folder = "static/image/fake"
+output_folder = "static/img/fake"
 os.makedirs(output_folder, exist_ok=True)
 
 # Realistic prompt templates
