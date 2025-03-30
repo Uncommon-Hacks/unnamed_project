@@ -32,8 +32,6 @@ An AI-powered memory authentication system that replaces passwords with somethin
 - **Jinja2** — templating for dynamic HTML
 - **Bootstrap 5** — responsive layout
 - **Custom CSS** — neon-inspired dark theme with accessibility in mind
-- **(Optional)**: OpenCV / Gemini / ML model (describe your image-processing stack if applicable)
-
 ---
 
 ## 🚀 Getting Started
