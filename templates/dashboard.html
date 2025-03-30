@@ -1,23 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>Memory Chat</h1>
+    <h1 class="mb-4">Memory Chat</h1>
     <p>Welcome back, {{ username }}. Chat with your memories below.</p>
-    
-    <div class="memory-chat-container">
+
+    <div class="memory-chat-container card p-4 mt-4">
         <div class="chat-messages">
             {% for message in messages %}
-                <div class="message {{ message.sender }}">
+                <div class="message {% if message.sender == 'user' %}user{% else %}ai{% endif %}">
                     <div class="message-content">
                         <p>{{ message.text }}</p>
                     </div>
-                    <div class="message-time">Today,  random time for now </div>
+                    <div class="message-time">Today, random time for now</div>
                 </div>
             {% endfor %}
         </div>
-        
-        <form method="POST" class="chat-input">
-            <input type="text" name="user_input" placeholder="Ask about a memory..." />
-            <button type="submit">
+
+        <form method="POST" class="chat-input d-flex mt-3">
+            <input type="text" name="user_input" placeholder="Ask about a memory..." class="form-control me-2" />
+            <button type="submit" class="btn btn-primary">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="22" y1="2" x2="11" y2="13"></line>
                     <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>

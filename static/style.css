@@ -130,3 +130,19 @@ a:hover {
     border-color: var(--primary-glow);
     box-shadow: 0 0 12px rgba(0, 255, 224, 0.6);
 }
+
+.message.user .message-content {
+    background-color: #0f2f3f;
+    border-radius: 1rem 1rem 0.25rem 1rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    color: #aaffff;
+}
+
+.message.ai .message-content {
+    background-color: #202020;
+    border-radius: 1rem 1rem 1rem 0.25rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
