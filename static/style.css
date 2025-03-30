@@ -1,1 +1,40 @@
 
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+    justify-items: center;
+    margin: 2rem 0;
+    padding: 0 1rem;
+}
+
+.image-item {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Ensures square cells */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-item img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Ensures full image fits inside without distortion */
+    border-radius: 8px;
+    border: 3px solid transparent;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.image-item img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 255, 224, 0.4);
+}
+
+/* Active selection style */
+.image-item img.selected {
+    border: 3px solid #00ffe0;
+    box-shadow: 0 0 12px rgba(0, 255, 224, 0.6);
+}
