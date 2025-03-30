@@ -51,11 +51,14 @@ def generate_gemini_response(prompt, user_id):
 
     data = get_memories(user_id)
 
-    custom_prompt = f'''You are given a bunch of memories of a user who is talking to
-                        you. Use these memories of the user to repsonse to the next message
-                        Memories: {data}
-                        Next Message: "{prompt}"
-                        Next message is a user message and you just have to reponsd the user normally having memories as your context'''
+    custom_prompt = f'''You have access to the following user memories, 
+                        which provide context about their background, interests, 
+                        projects, and ongoing challenges. Use these memories to inform your responses, 
+                        ensuring relevance and personalization. Do not include or reference the memories 
+                        explicitly in your reply—simply use them to enhance the conversation naturally.
+                        User Memories: {data} User’s Message: “{prompt}” Respond to the user as if 
+                        you have an ongoing understanding of their context, but without directly 
+                        mentioning or revealing the stored memories'''
     try:
         response = client.models.generate_content(
             model='gemini-2.0-flash',
