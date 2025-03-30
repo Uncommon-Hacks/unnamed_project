@@ -1,56 +1,132 @@
+:root {
+    --primary-glow: #00ffe0;
+    --primary-bg: #0d0d0d;
+    --card-bg: #1a1a1a;
+    --text-main: #e0e0e0;
+    --text-muted: #888;
+    --highlight: linear-gradient(90deg, #00ffe0, #4a6fff);
+}
 
+/* Global Reset */
+body {
+    background-color: var(--primary-bg);
+    color: var(--text-main);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+a {
+    color: var(--primary-glow);
+    text-decoration: none;
+}
+a:hover {
+    color: #00fff7;
+    text-shadow: 0 0 5px var(--primary-glow);
+}
+
+/* Navbar */
+.navbar {
+    background-color: #111 !important;
+    box-shadow: 0 0 8px rgba(0, 255, 224, 0.15);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    background: var(--highlight);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    color: var(--text-muted) !important;
+    transition: 0.2s ease;
+}
+.nav-link:hover {
+    color: var(--primary-glow) !important;
+    text-shadow: 0 0 6px var(--primary-glow);
+}
+
+/* Flash messages */
+.flash-messages {
+    background-color: #222;
+    border-left: 4px solid var(--primary-glow);
+    color: var(--text-main);
+}
+
+/* Card */
+.card {
+    background-color: var(--card-bg);
+    border: none;
+    box-shadow: 0 0 20px rgba(0, 255, 224, 0.05), 0 0 10px rgba(255, 255, 255, 0.03);
+    border-radius: 1rem;
+}
+
+/* Buttons */
+.btn-primary {
+    background: var(--highlight);
+    border: none;
+    color: #000;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+.btn-primary:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 0 10px var(--primary-glow);
+}
+
+/* Optional: inputs, forms, etc. */
+.form-control {
+    background-color: #1e1e1e;
+    color: #fff;
+    border: 1px solid #444;
+}
+.form-control:focus {
+    border-color: var(--primary-glow);
+    box-shadow: 0 0 5px var(--primary-glow);
+}
 .image-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 1rem;
-    justify-items: center;
+    gap: 1.2rem;
     margin: 2rem 0;
-    padding: 0 1rem;
 }
 
+/* Container for each image — maintains aspect ratio */
 .image-item {
-    width: 100%;
-    aspect-ratio: 1 / 1; /* Ensures square cells */
-    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    background-color: #111;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 0 10px rgba(0, 255, 224, 0.08);
+    transition: box-shadow 0.2s ease;
 }
 
+.image-item:hover {
+    box-shadow: 0 0 15px rgba(0, 255, 224, 0.2);
+}
+
+/* Actual image element */
 .image-item img {
     max-width: 100%;
     max-height: 100%;
-    object-fit: contain; /* Ensures full image fits inside without distortion */
-    border-radius: 8px;
+    object-fit: contain;
+    border-radius: 0.5rem;
     border: 3px solid transparent;
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     cursor: pointer;
 }
 
+/* Hover effect */
 .image-item img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 10px rgba(0, 255, 224, 0.4);
+    transform: scale(1.04);
+    box-shadow: 0 0 8px rgba(0, 255, 224, 0.3);
 }
 
-/* Active selection style */
+/* Selected image highlight */
 .image-item img.selected {
-    border: 3px solid #00ffe0;
+    border-color: var(--primary-glow);
     box-shadow: 0 0 12px rgba(0, 255, 224, 0.6);
-}
-.navbar-brand {
-    font-weight: bold;
-    color: #4a6fff !important;
-}
-.auth-image {
-    cursor: pointer;
-    transition: 0.2s ease;
-    border: 3px solid transparent;
-}
-.auth-image:hover {
-    border-color: #4a6fff;
-    transform: scale(1.02);
-}
-.flash-messages {
-    margin-top: 1rem;
 }
