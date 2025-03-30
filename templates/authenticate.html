@@ -17,7 +17,7 @@
         <div class="image-grid">
             {% for image in images %}
                 <div class="image-item">
-                    <img src="{{ image.path }}" onclick="selectImage({{ image.index }})" data-index="{{ image.index }}">
+                    <img src="{{ image.path }}"  data-index="{{ image.index }}">
                 </div>
             {% endfor %}
         </div>
